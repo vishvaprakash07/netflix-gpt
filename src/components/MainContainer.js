@@ -8,7 +8,7 @@ const MainContainer = () => {
   if (!Array.isArray(movies) || movies.length === 0) {
     return null;
   }
-  const mainMovie = movies[0];
+  const mainMovie = movies[2];
 
   return (
     <div>

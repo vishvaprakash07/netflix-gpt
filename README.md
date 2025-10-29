@@ -27,6 +27,10 @@
 - Update Store with Trailer Video Data
 - Embedded the Youtube video and make it autoplay and mute
 - Tailwind classes to make main container look awesome
+- Build Secondary Component
+- Build movie List
+- Build Movie Card
+- Created Custom Hooks for movie lists to display them in secondary container
 
 
 
