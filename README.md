@@ -12,6 +12,13 @@
 - Implement Sign In User Api
 - Created Redux Store with userSlice
 - Implemented Sign Out
+- Update profile
+- Bugfix: Update user profile with display name and profile picture
+- Bugfix: redirect user from /browse page to / login page if not logged in.
+- Unsubscribed to onAuthStateChanged call back.
+- Add hardcoded values to constants file.
+- Register TMDB API & create 
+
 
 
 
