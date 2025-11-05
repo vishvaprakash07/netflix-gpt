@@ -55,8 +55,8 @@ const Header = () => {
 
 
     return (
-      <div className="absolute w-screen px-8 py-2 bg-gradient-to-b flex justify-between from-black z-10">
-        <img className="w-44" src={LOGO} alt="Netflix Logo" />
+      <div className="absolute w-screen px-8 py-2 bg-gradient-to-b flex flex-col md:flex-row  justify-between from-black z-10">
+        <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="Netflix Logo" />
         {user && (
           <div className="flex p-2">
             {showGptSearch && (
@@ -79,12 +79,12 @@ const Header = () => {
             </button>
             {user.photoURL ? (
               <img
-                className="w-12 h-12"
+                className="w-12 h-12 hidden md:block"
                 src={user.photoURL}
                 alt="User Avatar"
               />
             ) : (
-              <img className="w-12 h-12" src={USER_AVATAR} alt="User Avatar" />
+              <img className="w-12 h-12 hidden md:block" src={USER_AVATAR} alt="User Avatar" />
             )}
             <button
               onClick={handleSignOut}
