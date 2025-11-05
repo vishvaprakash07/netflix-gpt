@@ -12,7 +12,7 @@ const MovieList = (props) => {
                     movies?.map((movie) => (
                         <MovieCard key={movie.id} movie={movie} />
                     ))
-                };
+                }
             </div>
         </div>
     </div>
