@@ -31,6 +31,9 @@
 - Build movie List
 - Build Movie Card
 - Created Custom Hooks for movie lists to display them in secondary container
+- GPT Search Page
+- GPT Search Bar
+- Multi Language Feature
 
 
 
