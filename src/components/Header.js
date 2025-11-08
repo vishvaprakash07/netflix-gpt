@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
@@ -15,6 +15,8 @@ const Header = () => {
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
     const showGptSearch = useSelector(store => store.gpt?.showGptSearch);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const menuRef= useRef();
 
     const dispatch = useDispatch();
 
@@ -53,6 +55,11 @@ const Header = () => {
       dispatch(toggleGptSearchView());
     }
 
+    const handleProfileImageError = (e) => {
+      e.target.src = USER_AVATAR;
+    }
+
+
 
     return (
       <div className="absolute w-screen px-8 py-2 bg-gradient-to-b flex flex-col md:flex-row  justify-between from-black z-10">
@@ -77,21 +84,28 @@ const Header = () => {
             >
               {showGptSearch ? "Home Page" : "GPT Search"}
             </button>
-            {user.photoURL ? (
+            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="cursor-pointer">
+              {user.photoURL ? (
               <img
                 className="w-12 h-12 hidden md:block"
                 src={user.photoURL}
                 alt="User Avatar"
+                onError={handleProfileImageError}
               />
             ) : (
               <img className="w-12 h-12 hidden md:block" src={USER_AVATAR} alt="User Avatar" />
             )}
-            <button
-              onClick={handleSignOut}
-              className="text-white bg-red-600 px-2 rounded-md ml-4"
-            >
-              Sign Out
             </button>
+
+              <div className={`absolute top-16 right-10 rounded-md bg-gray-900  w-40
+                transition-all duration-300 ease-out
+                ${dropdownOpen ? 'scale-100 translate-y-0 opacity-80' : 'opacity-0 scale-95 -translate-y-4'}`}>
+                <ul className="text-white text-center text-sm">
+                  <li className="py-2 hover:bg-gray-600">Profile</li>
+                  <li className="py-2 hover:bg-gray-600" onClick={handleSignOut}>Sign Out</li>
+                </ul>
+              </div>
+            
           </div>
         )}
       </div>

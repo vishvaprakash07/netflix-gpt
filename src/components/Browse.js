@@ -7,29 +7,40 @@ import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 import GptSearch from './GptSearch';
 import { useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { setNowPlayingTrailer } from "../utils/movieSlice";
 
 const Browse = () => {
+  const { movieId } = useParams();
+  const dispatch = useDispatch();
 
-    useNowPlayingMovies();
-    usePopularMovies();
-    useTopRatedMovies();
-    useUpcomingMovies();
+  useEffect(() => {
+    movieId ? dispatch(setNowPlayingTrailer({isNowPlayingTrailer: true, nowPlayingTrailer: movieId})) :
+    dispatch(setNowPlayingTrailer({isNowPlayingTrailer: false, nowPlayingTrailer: null}));
+  },[movieId, dispatch]);
 
-    const isGptSearchVisible = useSelector((store) => store.gpt?.showGptSearch);
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
 
-    return (
-      <div>
-        <Header />
-        {isGptSearchVisible ? (
-          <GptSearch />
-        ) : (
-          <>
-            <MainContainer />
-            <SecondaryContainer />
-          </>
-        )}
-      </div>
-    );
+  const isGptSearchVisible = useSelector((store) => store.gpt?.showGptSearch);
+
+  return (
+    <div>
+      <Header />
+      {isGptSearchVisible ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Browse;

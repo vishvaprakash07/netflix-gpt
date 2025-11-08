@@ -1,4 +1,5 @@
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 const MovieList = (props) => {
   const { title, movies } = props;
@@ -10,7 +11,7 @@ const MovieList = (props) => {
             <div className="flex">
                 {
                     movies?.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                        <Link to={`/browse/${movie.id}`} key={movie.id}><MovieCard movie={movie} /></Link>
                     ))
                 }
             </div>
