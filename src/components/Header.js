@@ -99,7 +99,7 @@ const Header = () => {
 
               <div className={`absolute top-16 right-10 rounded-md bg-gray-900  w-40
                 transition-all duration-300 ease-out
-                ${dropdownOpen ? 'scale-100 translate-y-0 opacity-80' : 'opacity-0 scale-95 -translate-y-4'}`}>
+                ${dropdownOpen ? 'scale-100 translate-y-0 opacity-80' : 'opacity-0 scale-95 -translate-y-1'}`}>
                 <ul className="text-white text-center text-sm">
                   <li className="py-2 hover:bg-gray-600">Profile</li>
                   <li className="py-2 hover:bg-gray-600" onClick={handleSignOut}>Sign Out</li>
