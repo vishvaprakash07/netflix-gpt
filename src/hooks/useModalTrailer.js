@@ -1,9 +1,9 @@
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addTrailerVideo } from "../utils/movieSlice";
+import { setNowPlayingTrailer } from "../utils/movieSlice";
 
-const useMovieTrailer = (movieId) => {
+const useModalTrailer = (movieId) => {
     const dispatch = useDispatch();
 
     //fetching the trailer video and updating the store with trailer video data
@@ -14,7 +14,7 @@ const useMovieTrailer = (movieId) => {
         console.log("Movie Videos: ", json);
         const filterData = json.results.filter((video) => video.type === "Trailer");
         const trailer = filterData.length ? filterData[0] : json.results[0];
-        dispatch(addTrailerVideo(trailer));
+        dispatch(setNowPlayingTrailer({isNowPlayingTrailer: true, nowPlayingTrailerId: movieId, nowPlayingTrailer: trailer}));
     };
 
     useEffect(() => {
@@ -23,4 +23,4 @@ const useMovieTrailer = (movieId) => {
 }
  
 
-export default useMovieTrailer;
+export default useModalTrailer;

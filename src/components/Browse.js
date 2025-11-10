@@ -7,20 +7,9 @@ import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 import GptSearch from './GptSearch';
 import { useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect } from 'react';
-import { setNowPlayingTrailer } from "../utils/movieSlice";
+import TrailerModal from './TrailerModal';
 
 const Browse = () => {
-  const { movieId } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    movieId ? dispatch(setNowPlayingTrailer({isNowPlayingTrailer: true, nowPlayingTrailer: movieId})) :
-    dispatch(setNowPlayingTrailer({isNowPlayingTrailer: false, nowPlayingTrailer: null}));
-  },[movieId, dispatch]);
-
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -39,6 +28,7 @@ const Browse = () => {
           <SecondaryContainer />
         </>
       )}
+      <TrailerModal />
     </div>
   );
 };

@@ -1,8 +1,17 @@
 import MovieCard from "./MovieCard";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setNowPlayingTrailer } from "../utils/movieSlice";
+
 
 const MovieList = (props) => {
   const { title, movies } = props;
+
+  const dispatch = useDispatch();
+
+  const handleMovieClick = (movie) => {
+    if(movie?.trailerAvailable === false) return;
+    dispatch(setNowPlayingTrailer({isNowPlayingTrailer: true, nowPlayingTrailerId: movie.id}));
+  }
 
   return (
     <div className="px-6">
@@ -11,7 +20,9 @@ const MovieList = (props) => {
             <div className="flex">
                 {
                     movies?.map((movie) => (
-                        <Link to={`/browse/${movie.id}`} key={movie.id}><MovieCard movie={movie} /></Link>
+                        <div onClick={() => handleMovieClick(movie)} key={movie.id}>
+                            <MovieCard movie={movie} />
+                        </div>
                     ))
                 }
             </div>

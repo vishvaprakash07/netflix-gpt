@@ -38,6 +38,20 @@ const Header = () => {
       return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
     const handleSignOut = () => {
         signOut(auth).then(() => {
           // Sign-out successful.
@@ -84,7 +98,7 @@ const Header = () => {
             >
               {showGptSearch ? "Home Page" : "GPT Search"}
             </button>
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="cursor-pointer">
+            <button ref={menuRef} onClick={() => setDropdownOpen((prev) => !prev)} className="cursor-pointer">
               {user.photoURL ? (
               <img
                 className="w-12 h-12 hidden md:block"
