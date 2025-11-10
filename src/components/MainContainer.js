@@ -16,6 +16,7 @@ const MainContainer = () => {
       <VideoTitle
         title={mainMovie?.original_title}
         overview={mainMovie?.overview}
+        movie={mainMovie}
       />
     </div>
   );

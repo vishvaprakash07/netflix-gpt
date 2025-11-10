@@ -115,7 +115,7 @@ const Header = () => {
                 transition-all duration-300 ease-out
                 ${dropdownOpen ? 'scale-100 translate-y-0 opacity-80' : 'opacity-0 scale-95 -translate-y-1'}`}>
                 <ul className="text-white text-center cursor-pointer text-sm">
-                  <li className="py-2 hover:bg-gray-600">Profile</li>
+                  {/* <li className="py-2 hover:bg-gray-600">Profile</li> */}
                   <li className="py-2 hover:bg-gray-600" onClick={handleSignOut}>Sign Out</li>
                 </ul>
               </div>

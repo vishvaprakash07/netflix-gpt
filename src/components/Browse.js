@@ -8,6 +8,7 @@ import SecondaryContainer from './SecondaryContainer';
 import GptSearch from './GptSearch';
 import { useSelector } from 'react-redux';
 import TrailerModal from './TrailerModal';
+import Footer from './Footer';
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -29,6 +30,7 @@ const Browse = () => {
         </>
       )}
       <TrailerModal />
+      <Footer />
     </div>
   );
 };
