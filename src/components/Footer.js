@@ -5,7 +5,6 @@ const Footer = () => {
             <p>Data is fetched from TMDB API's</p>
             <p>For Queries and Support, contact <a href="mailto:vishva07071981@gmail.com">vishva07071981@gmail.com</a></p>
             <p>This product is for educational purposes only, cloned from Akshay Saini. Any copyright claim is not intended.</p>
-            <p>Copyright © Vishva_MSD. All Rights Reserved.</p>
         </div>
     );
 };
