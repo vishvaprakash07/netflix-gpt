@@ -76,7 +76,7 @@ const Header = () => {
 
 
     return (
-      <div className="absolute w-screen px-8 py-2 bg-gradient-to-b flex flex-col md:flex-row  justify-between from-black z-10">
+      <div className="absolute w-screen px-4 py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between flex-wrap gap-2">
         <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="Netflix Logo" />
         {user && (
           <div className="flex p-2 justify-between">
@@ -93,33 +93,49 @@ const Header = () => {
               </select>
             )}
             <button
-              className="py-2 px-4 mx-4 text-white bg-yellow-500 rounded-md"
+              className="py-2 px-4 mx-4 text-white bg-yellow-500 h-12 flex items-center rounded-md"
               onClick={handleGPTSearch}
             >
               {showGptSearch ? "Home Page" : "GPT Search"}
             </button>
-            <button ref={menuRef} onClick={() => setDropdownOpen((prev) => !prev)} className="cursor-pointer">
+            <div ref={menuRef} className="relative ">
+              <button
+              onClick={() => setDropdownOpen((prev) => !prev)}
+              className="cursor-pointer"
+            >
               {user.photoURL ? (
-              <img
-                className="w-12 h-12  md:block"
-                src={user.photoURL}
-                alt="User Avatar"
-                onError={handleProfileImageError}
-              />
-            ) : (
-              <img className="w-12 h-12 md:block" src={USER_AVATAR} alt="User Avatar" />
-            )}
+                <img
+                  className="w-12 h-12  md:block"
+                  src={user.photoURL}
+                  alt="User Avatar"
+                  onError={handleProfileImageError}
+                />
+              ) : (
+                <img
+                  className="w-12 h-12 md:block"
+                  src={USER_AVATAR}
+                  alt="User Avatar"
+                />
+              )}
             </button>
 
-              <div className={`absolute top-16 right-10 rounded-md bg-gray-900  w-40
-                transition-all duration-300 ease-out
-                ${dropdownOpen ? 'scale-100 translate-y-0 opacity-80' : 'opacity-0 scale-95 -translate-y-1'}`}>
-                <ul className="text-white text-center cursor-pointer text-sm">
-                  {/* <li className="py-2 hover:bg-gray-600">Profile</li> */}
-                  <li className="py-2 hover:bg-gray-600" onClick={handleSignOut}>Sign Out</li>
-                </ul>
-              </div>
-            
+            <div
+              className={`absolute -mt-[6px] top-full right-0 z-[60] rounded-md bg-gray-900 w-40
+                    transition-all duration-300 ease-out origin-top
+                    ${
+                      dropdownOpen
+                        ? "scale-100 opacity-100"
+                        : "scale-95 opacity-0 pointer-events-none"
+                    }`}
+            >
+              <ul className="text-white text-center cursor-pointer text-sm">
+                {/* <li className="py-2 hover:bg-gray-600">Profile</li> */}
+                <li className="py-2 hover:bg-gray-600" onClick={handleSignOut}>
+                  Sign Out
+                </li>
+              </ul>
+            </div>
+            </div>
           </div>
         )}
       </div>

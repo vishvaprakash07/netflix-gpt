@@ -81,7 +81,7 @@ const TrailerModal = () => {
         </button>
 
         {/* VideoBackground Component */}
-        <div className="w-screen h-screen max-h-screen">
+        <div className="w-screen h-screen">
           <VideoBackground movieId={nowPlayingTrailerId} isModal={true} />
         </div>
       </div>
