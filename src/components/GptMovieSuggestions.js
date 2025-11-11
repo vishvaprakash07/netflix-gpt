@@ -32,8 +32,6 @@ const GptMovieSuggestions = () => {
                   );
                   const json = await response.json();
 
-                  console.log(`Movie: ${movie.title}, Videos:`, json);
-
                   // Check if trailer exists
                   const filterData = json.results.filter((video) => video.type === "Trailer");
                   const trailer = filterData.length ? filterData[0] : json.results[0];
@@ -65,7 +63,6 @@ const GptMovieSuggestions = () => {
         );
 
         setEnrichedMovieResults(enrichedResults);
-        console.log("Enriched Movie Results:", enrichedResults);
       } catch (error) {
         console.error("Error enriching movies with trailer info:", error);
         setEnrichedMovieResults(movieResults); // Fallback to original

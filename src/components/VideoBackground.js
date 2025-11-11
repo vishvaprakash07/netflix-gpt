@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const VideoBackground = ({ movieId, isModal = false }) => {
     const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
-    console.log("VideoBackground - trailerVideo: ", trailerVideo);
     const nowPlayingTrailer = useSelector((store) => store.movies?.nowPlayingTrailer);
 
 

@@ -79,7 +79,7 @@ const Header = () => {
       <div className="absolute w-screen px-8 py-2 bg-gradient-to-b flex flex-col md:flex-row  justify-between from-black z-10">
         <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="Netflix Logo" />
         {user && (
-          <div className="flex p-2">
+          <div className="flex p-2 justify-between">
             {showGptSearch && (
               <select
                 className="p-2 bg-gray-900 text-white"
@@ -101,13 +101,13 @@ const Header = () => {
             <button ref={menuRef} onClick={() => setDropdownOpen((prev) => !prev)} className="cursor-pointer">
               {user.photoURL ? (
               <img
-                className="w-12 h-12 hidden md:block"
+                className="w-12 h-12  md:block"
                 src={user.photoURL}
                 alt="User Avatar"
                 onError={handleProfileImageError}
               />
             ) : (
-              <img className="w-12 h-12 hidden md:block" src={USER_AVATAR} alt="User Avatar" />
+              <img className="w-12 h-12 md:block" src={USER_AVATAR} alt="User Avatar" />
             )}
             </button>
 

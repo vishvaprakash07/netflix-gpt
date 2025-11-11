@@ -8,7 +8,6 @@ const MainContainer = () => {
 
   const mainMovie = Array.isArray(movies) && movies.length > 0 ? movies[0] : null;
   useMovieTrailer(mainMovie?.id);
-  console.log("MainContainer - mainMovie: ", mainMovie);
 
   return (
     <div className="pt-[30%] md:pt-0 bg-black">
