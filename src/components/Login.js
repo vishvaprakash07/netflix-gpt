@@ -121,7 +121,7 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p className="text-gray-400 text-sm">
-          {isSignInForm ? "New to Netflix?" : "Already registered?"}
+          {isSignInForm ? "New to Trailer Hub?" : "Already registered?"}
           <span
             onClick={toggleSignInForm}
             className="text-white cursor-pointer"
